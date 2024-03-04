@@ -1,2 +1,1 @@
-https://share.streamlit.io/
-https://jubilant-robot-pqwxqx4764xf6xg5-8501.app.github.dev/
+https://dashboard-erika.streamlit.app/
