@@ -62,7 +62,6 @@ menu = st.sidebar.selectbox('Pilih Menu:', ['Dashboard', 'Dataset',])
 
 # Visualisasi sesuai pilihan menu
 if menu == 'Dashboard':
-    
      # 10 Kota dengan Jumlah Pelanggan Terbanyak
     col1, col2 = st.columns(2)
     with col1:
@@ -114,20 +113,22 @@ if menu == 'Dashboard':
     plt.xticks(rotation=45)
     plt.grid(True)
     st.pyplot()
+    pass
+    
 
 if menu == 'Dataset':
     st.write("Tabel Dataset Customers:")
-st.dataframe(customers_df)
+    st.dataframe(customers_df)
+    
+    st.write("Tabel Dataset Orders:")
+    st.dataframe(orders_df)
 
-st.write("Tabel Dataset Orders:")
-st.dataframe(orders_df)
-
-st.write("Tabel Dataset Products:")
-st.dataframe(product_df)
-
-st.write("Tabel Dataset Order Items:")
-st.dataframe(order_item_df)
-
-st.write("Tabel Dataset Order Payments:")
-st.dataframe(order_payment_df)
+    st.write("Tabel Dataset Products:")
+    st.dataframe(product_df)
+    
+    st.write("Tabel Dataset Order Items:")
+    st.dataframe(order_item_df)
+    
+    st.write("Tabel Dataset Order Payments:")
+    st.dataframe(order_payment_df)
 
