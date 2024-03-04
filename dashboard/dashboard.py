@@ -2,25 +2,22 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
-import csv
+
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-current_directory = os.path.dirname(os.path.abspath(__file__))
-data_path = os.path.join(current_directory, "..", "data") 
-
 # Membaca dataset
-customers_df = pd.read_csv(os.path.join(data_path, "customers_dataset.csv"))
-order_item_df = pd.read_csv(os.path.join(data_path, "order_items_dataset.csv"))
-order_payment_df = pd.read_csv(os.path.join(data_path, "order_payments_dataset.csv"))
-orders_df = pd.read_csv(os.path.join(data_path, "orders_dataset.csv"))
-product_df = pd.read_csv(os.path.join(data_path, "products_dataset.csv"))
+customers_df = pd.read_csv("customers_dataset.csv")
+order_item_df = pd.read_csv("order_items_dataset.csv")
+order_payment_df = pd.read_csv("order_payments_dataset.csv")
+orders_df = pd.read_csv("orders_dataset.csv")
+product_df = pd.read_csv("products_dataset.csv")
 
 # Menangani missing value pada orders_df
 orders_df['order_approved_at'] = pd.to_datetime(orders_df['order_approved_at'], errors='coerce')
 orders_df['order_delivered_carrier_date'] = pd.to_datetime(orders_df['order_delivered_carrier_date'], errors='coerce')
 orders_df['order_delivered_customer_date'] = pd.to_datetime(orders_df['order_delivered_customer_date'], errors='coerce')
+orders_df['order_estimated_delivery_date'] = pd.to_datetime(orders_df['order_estimated_delivery_date'], errors='coerce')
 
 mean_order_approved_at = orders_df['order_approved_at'].mean()
 mean_order_delivered_carrier_date = orders_df['order_delivered_carrier_date'].mean()
@@ -29,6 +26,7 @@ mean_order_delivered_customer_date = orders_df['order_delivered_customer_date'].
 orders_df['order_approved_at'].fillna(mean_order_approved_at, inplace=True)
 orders_df['order_delivered_carrier_date'].fillna(mean_order_delivered_carrier_date, inplace=True)
 orders_df['order_delivered_customer_date'].fillna(mean_order_delivered_customer_date, inplace=True)
+
 
 # Menangani missing value pada product_df
 product_df['product_category_name'].fillna(product_df['product_category_name'].mode()[0], inplace=True)
