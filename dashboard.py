@@ -3,7 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Membaca dataset
